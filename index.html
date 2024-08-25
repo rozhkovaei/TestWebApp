@@ -69,7 +69,7 @@
    let profName = document.createElement('p');
    profName.innerText = `${tg.initDataUnsafe.user.first_name}
    ${tg.initDataUnsafe.user.last_name}
-   ${tg.initDataUnsafe.user.username} (${window.localStorage.getItem("__telegram__initParams")})`;
+   ${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
   
    usercard.appendChild(profName);
 
