@@ -35,19 +35,6 @@ app.post("/validate-init", (req, res) => {
 
 //	return res.status(401).json({});
 
-let usercard = document.getElementById("usercard");
-
-let profName = document.createElement('p');
-profName.innerText = `${tg.initDataUnsafe.user.first_name}
-${tg.initDataUnsafe.user.last_name}
-${tg.initDataUnsafe.user.username} (${data})`;
-
-usercard.appendChild(profName);
-
-let userid = document.createElement('p');
-userid.innerText = `${tg.initDataUnsafe.user.id}`;
-usercard.appendChild(userid);
-
 return res.status(200).json({});
 });
 
