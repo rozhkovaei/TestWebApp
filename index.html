@@ -49,36 +49,37 @@
    </div>
    <p>Bot started</p>
 
+   <script>
+    function setThemeClass() {
+         document.documentElement.className = Telegram.WebApp.colorScheme;
+    }
+ 
+    Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+    setThemeClass();
+ 
+    window.addEventListener("ready", async function () {
+     const data = await fetch(
+         "/validate-init",
+         { method: "POST", body: app.initData },
+     ).then(res => res.json());
+ 
+     let usercard = document.getElementById("usercard");
+ 
+ let profName = document.createElement('p');
+ profName.innerText = `${tg.initDataUnsafe.user.first_name}
+ ${tg.initDataUnsafe.user.last_name}
+ ${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
+ 
+ usercard.appendChild(profName);
+ 
+ let userid = document.createElement('p');
+ userid.innerText = `${tg.initDataUnsafe.user.id}`;
+ usercard.appendChild(userid);
+ 
+     });
+ </script>
+ 
 </body>
 	
-<script>
-   function setThemeClass() {
-        document.documentElement.className = Telegram.WebApp.colorScheme;
-   }
-
-   Telegram.WebApp.onEvent('themeChanged', setThemeClass);
-   setThemeClass();
-
-   window.addEventListener("ready", async function () {
-	const data = await fetch(
-		"/validate-init",
-		{ method: "POST", body: app.initData },
-	).then(res => res.json());
-
-    let usercard = document.getElementById("usercard");
-
-let profName = document.createElement('p');
-profName.innerText = `${tg.initDataUnsafe.user.first_name}
-${tg.initDataUnsafe.user.last_name}
-${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
-
-usercard.appendChild(profName);
-
-let userid = document.createElement('p');
-userid.innerText = `${tg.initDataUnsafe.user.id}`;
-usercard.appendChild(userid);
-
-    });
-</script>
 
 </html>
