@@ -6,7 +6,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Test Telegram WebApps API</title>
    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-   <script src="./web-app.js" type="module"></script>
 
    <style>
       body{
@@ -47,9 +46,8 @@
    <div id="usercard">
    </div>
    <p>App started</p>
-</body>
 
-<script src="./web-app.js" type="module">
+<script>
 
     function setThemeClass() {
          document.documentElement.className = Telegram.WebApp.colorScheme;
@@ -71,12 +69,13 @@
      userid.innerText = `${tg.initDataUnsafe.user.id}`;
     usercard.appendChild(userid);
 
-    window.addEventListener("ready", async function () {
+  /*  window.addEventListener("ready", async function () {
      const data = await fetch(
          "/validate-init",
          { method: "POST", body: app.initData },
      ).then(res => res.json());
  
-     });
+     });*/
  </script>
+ </body>
 </html>
