@@ -57,13 +57,7 @@
     Telegram.WebApp.onEvent('themeChanged', setThemeClass);
     setThemeClass();
  
-    window.addEventListener("ready", async function () {
-     const data = await fetch(
-         "/validate-init",
-         { method: "POST", body: app.initData },
-     ).then(res => res.json());
- 
-     let usercard = document.getElementById("usercard");
+    let usercard = document.getElementById("usercard");
  
  let profName = document.createElement('p');
  profName.innerText = `${tg.initDataUnsafe.user.first_name}
@@ -75,6 +69,12 @@
  let userid = document.createElement('p');
  userid.innerText = `${tg.initDataUnsafe.user.id}`;
  usercard.appendChild(userid);
+ 
+    window.addEventListener("ready", async function () {
+     const data = await fetch(
+         "/validate-init",
+         { method: "POST", body: app.initData },
+     ).then(res => res.json());
  
      });
  </script>
