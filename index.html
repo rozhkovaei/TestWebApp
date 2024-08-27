@@ -5,6 +5,8 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Test Telegram WebApps API</title>
+   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+   <script src="./web-app.js" type="module"></script>
 
    <style>
       body{
@@ -42,34 +44,33 @@
 </head>
 
 <body>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="./web-app.js" type="module"></script>
-
    <div id="usercard">
    </div>
-   <p>Bot started</p>
+   <p>App started</p>
+</body>
 
-   <script>
+<script>
+
     function setThemeClass() {
          document.documentElement.className = Telegram.WebApp.colorScheme;
     }
- 
+
     Telegram.WebApp.onEvent('themeChanged', setThemeClass);
     setThemeClass();
  
     let usercard = document.getElementById("usercard");
  
- let profName = document.createElement('p');
- profName.innerText = `${tg.initDataUnsafe.user.first_name}
- ${tg.initDataUnsafe.user.last_name}
- ${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
+    let profName = document.createElement('p');
+    profName.innerText = `${tg.initDataUnsafe.user.first_name}
+    ${tg.initDataUnsafe.user.last_name}
+    ${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
  
- usercard.appendChild(profName);
+    usercard.appendChild(profName);
  
- let userid = document.createElement('p');
- userid.innerText = `${tg.initDataUnsafe.user.id}`;
- usercard.appendChild(userid);
- 
+    let userid = document.createElement('p');
+     userid.innerText = `${tg.initDataUnsafe.user.id}`;
+    usercard.appendChild(userid);
+
     window.addEventListener("ready", async function () {
      const data = await fetch(
          "/validate-init",
@@ -78,8 +79,4 @@
  
      });
  </script>
- 
-</body>
-	
-
 </html>
