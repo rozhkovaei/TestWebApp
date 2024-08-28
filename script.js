@@ -5,11 +5,8 @@ tg.expand();
 
 let usercard = document.getElementById("usercard");
 
-tg.showAlert(`${sessionStorage.__telegram__initParams}`, function () {
-                });
-
 let profName = document.createElement('p');
-profName.innerText = `${tg.initDataUnsafe.user.first_name}
+profName.innerText = `${sessionStorage.__telegram__initParams}
 ${tg.initDataUnsafe.user.last_name}
 ${tg.initDataUnsafe.user.username}`;
 usercard.appendChild(profName);
