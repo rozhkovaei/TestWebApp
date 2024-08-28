@@ -49,5 +49,14 @@
 </body>
 
 <script src="script.js"></script>
-  
+<script>
+   
+   window.addEventListener("ready", async function () {
+	const data = await fetch(
+		"/validate-init",
+		{ method: "POST", body: app.initData },
+	).then(res => res.json());
+});
+   
+</script>
 </html>
