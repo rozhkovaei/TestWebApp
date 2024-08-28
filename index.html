@@ -41,31 +41,31 @@
 </head>
 
 <body>
-   <div id="usercard">
-   </div>
+   <div id="usercard" />
    <p>App started</p>
+   
    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
+   <script>
 
-    function setThemeClass() {
-         document.documentElement.className = Telegram.WebApp.colorScheme;
-    }
+       function setThemeClass() {
+            document.documentElement.className = Telegram.WebApp.colorScheme;
+       }
 
-    Telegram.WebApp.onEvent('themeChanged', setThemeClass);
-    setThemeClass();
+       Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+       setThemeClass();
+    
+       let usercard = document.getElementById("usercard");
+    
+     /*  let profName = document.createElement('p');
+       profName.innerText = `${tg.initDataUnsafe.user.first_name}
+       ${tg.initDataUnsafe.user.last_name}
+       ${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
  
-    let usercard = document.getElementById("usercard");
- 
-    let profName = document.createElement('p');
-    profName.innerText = `${tg.initDataUnsafe.user.first_name}
-    ${tg.initDataUnsafe.user.last_name}
-    ${tg.initDataUnsafe.user.username} (${window.sessionStorage.getItem("__telegram__initParams")})`;
- 
-    usercard.appendChild(profName);
- 
-    let userid = document.createElement('p');
-     userid.innerText = `${tg.initDataUnsafe.user.id}`;
-    usercard.appendChild(userid);
+       usercard.appendChild(profName);*/
+    
+       let userid = document.createElement('p');
+       userid.innerText = `${tg.initDataUnsafe.user.id}`;
+       usercard.appendChild(userid);
 
   /*  window.addEventListener("ready", async function () {
      const data = await fetch(
@@ -74,6 +74,6 @@
      ).then(res => res.json());
  
      });*/
- </script>
+    </script>
  </body>
 </html>
