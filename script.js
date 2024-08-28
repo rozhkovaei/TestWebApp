@@ -2,10 +2,13 @@ import { createHmac } from "node:crypto";
 
 let tg = window.Telegram.WebApp;
 
-app.ready();
+tg.ready();
 tg.expand();
 
 let usercard = document.getElementById("usercard");
+
+Telegram.WebApp.showAlert(`${sessionStorage.__telegram__initParams}`, function () {
+                });
 
 let profName = document.createElement('p');
 profName.innerText = `${tg.initDataUnsafe.user.first_name}
@@ -32,7 +35,7 @@ function getCheckString(data: URLSearchParams) {
 	.join("\n");
 }
 
-app.post("/validate-init", (req, res) => {
+tg.post("/validate-init", (req, res) => {
    const data = new URLSearchParams(req.body);
 
    const data_check_string = getCheckString(data);
