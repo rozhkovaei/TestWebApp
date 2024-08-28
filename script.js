@@ -10,7 +10,7 @@ let usercard = document.getElementById("usercard");
 let profName = document.createElement('p');
 profName.innerText = `${tg.initDataUnsafe.user.first_name}
 ${tg.initDataUnsafe.user.last_name}
-${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+${tg.initDataUnsafe.user.username} (${window.sessionStorage.__telegram__initParams})`;
 usercard.appendChild(profName);
 
 let userid = document.createElement('p');
