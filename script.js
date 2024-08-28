@@ -1,15 +1,15 @@
-import { createHmac } from "node:crypto";
+const crypto = require('crypto');
 
 let tg = window.Telegram.WebApp;
 
 tg.ready();
 tg.expand();
 
-function HMAC_SHA256(key: string | Buffer, secret: string) {
-  return createHmac("sha256", key).update(secret);
+function HMAC_SHA256(key, secret) {
+  return crypto.createHmac('sha256', key).update(secret).digest('hex');
 }
 
-function getCheckString(data: URLSearchParams) {
+function getCheckString(data) {
 	const items: [k: string, v: string][] = [];
 
 	// remove hash
@@ -20,14 +20,13 @@ function getCheckString(data: URLSearchParams) {
 		.join("\n");
 }
 
-const verifyInitData = (telegramInitData): boolean => {
-  const data = new URLSearchParams(tg.initData);
+function verifyInitData = (): boolean => {
+  	const data = new URLSearchParams(tg.initData);
 
 	const data_check_string = getCheckString(data);
-	const secret_key = HMAC_SHA256("WebAppData", process.env.BOT_TOKEN!).digest();
-	const hash = HMAC_SHA256(secret_key, data_check_string).digest("hex");
-
-	return (hash === data.get("hash"));   
+	const hash = data.get("hash");
+	secret_key = HMAC_SHA256("WebAppData", process.env.BOT_TOKEN!);
+	return HMAC_SHA256(secret_key, data_check_string) == hash;  
 }
 
 let usercard = document.getElementById("usercard");
