@@ -60,7 +60,9 @@
    tg.expand();
 
    document.addEventListener('DOMContentLoaded', () => {
-     validateData(initData)
+
+     console.log(tg.initData);
+     validateData(tg.initData)
    });
 
    function validateData(data) {
