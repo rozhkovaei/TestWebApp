@@ -48,15 +48,32 @@
    <p>Just text</p>
 </body>
 
-<script src="script.js"></script>
 <script>
-   
+
+   let tg = window.Telegram.WebApp;
+
+   tg.ready();
+   tg.expand();
+	
    window.addEventListener("ready", async function () {
 	const data = await fetch(
 		"/validate-init",
 		{ method: "POST", body: app.initData },
 	).then(res => res.json());
-});
-   
+   });
+
+   let usercard = document.getElementById("usercard");
+
+   let profName = document.createElement('p');
+   profName.innerText = `${tg.initDataUnsafe.user.first_name}
+   ${tg.initDataUnsafe.user.last_name}
+   ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+
+   usercard.appendChild(profName);
+
+   let userid = document.createElement('p');
+   userid.innerText = `${tg.initDataUnsafe.user.id}`;
+   usercard.appendChild(userid);
+	
 </script>
 </html>
