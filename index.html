@@ -60,9 +60,8 @@
    tg.expand();
 
    document.addEventListener('DOMContentLoaded', () => {
-
-     console.log(tg.initData);
-     validateData(tg.initData)
+     console.log(window.sessionStorage.__telegram__initParams);
+     validateData(window.sessionStorage.__telegram__initParams)
    });
 
    function validateData(data) {
