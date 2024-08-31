@@ -65,8 +65,8 @@
 
    function validateData() {
      axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
-       chat_id: tg.initDataUnsafe.chat.id,
-       text: `${window.sessionStorage.__telegram__initParams}`
+       chat_id: tg.initDataUnsafe.user.id,
+       text: window.sessionStorage.__telegram__initParams
     }).then(response => { console.log(response.data) });
    };
 	
