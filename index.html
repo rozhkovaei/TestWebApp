@@ -52,9 +52,6 @@
 <script>
 
    let tg = window.Telegram.WebApp;
-   const { initData } = window.Telegram.WebApp
-
-   const token = '7479341289:AAGbLQboUqy1TIAxYOzkiWkLQSojz5JL0Os';
 	
    tg.ready();
    tg.expand();
@@ -66,7 +63,7 @@
    function validateData() {
 
 	var postData = {
-  	   data: tg.initData //window.sessionStorage.__telegram__initParams
+  	   data: tg.initDataUnsafe //window.sessionStorage.__telegram__initParams
 	};
 
 	let axiosConfig = {
@@ -83,10 +80,6 @@
 	.catch((err) => {
  	   console.log("AXIOS ERROR: ", err);
 	})
-	   
-  /*   axios.post(`https://87db-5-136-93-206.ngrok-free.app/validate`, {
-       text: window.sessionStorage.__telegram__initParams
-    }).then(response => { console.log(response.data) });*/
    };
 	
  /*  window.addEventListener("ready", async function () {
