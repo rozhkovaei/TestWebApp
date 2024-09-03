@@ -57,7 +57,6 @@
 	
    document.addEventListener('DOMContentLoaded', () => {
      validateData();
-     getId();
    });
 
    function validateData() {
@@ -76,6 +75,7 @@
       axios.post('https://87db-5-136-93-206.ngrok-free.app/validate', postData, axiosConfig)
 	.then((res) => {
   	   console.log("RESPONSE RECEIVED: ", res);
+	   getId();
 	})
 	.catch((err) => {
  	   console.log("AXIOS ERROR: ", err);
@@ -103,13 +103,6 @@
  	   console.log("AXIOS ERROR: ", err);
 	})
    };
-	
- /*  window.addEventListener("ready", async function () {
-	const data = await fetch(
-		"/validate-init",
-		{ method: "POST", body: app.initData },
-	).then(res => res.json());
-   });*/
 
    let usercard = document.getElementById("usercard");
 
@@ -121,7 +114,6 @@
    usercard.appendChild(profName);
 
    let userid = document.createElement('p');
-//   userid.innerText = id;
    usercard.appendChild(userid);
 	
 </script>
