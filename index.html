@@ -97,7 +97,7 @@
 	   
 	axios.post('https://87db-5-136-93-206.ngrok-free.app/id', postData, axiosConfig)
 	.then((res) => {
-  	   userid.innerText = res.id;
+  	   userid.innerText = res.data.id;
 	})
 	.catch((err) => {
  	   console.log("AXIOS ERROR: ", err);
