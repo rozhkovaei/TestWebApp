@@ -59,7 +59,7 @@
    var id;
 	
    document.addEventListener('DOMContentLoaded', () => {
-   //  validateData();
+     validateData();
      getId();
    });
 
@@ -86,7 +86,12 @@
    };
 
    function getId() {
-	axios.post('https://87db-5-136-93-206.ngrok-free.app/id', tg.initDataUnsafe.user.username, axiosConfig)
+
+	var postData = {
+  	   username: tg.initDataUnsafe.user.username
+	};
+	   
+	axios.post('https://87db-5-136-93-206.ngrok-free.app/id', postData, axiosConfig)
 	.then((res) => {
   	   userid.innerText = res;
 	})
@@ -112,7 +117,7 @@
    usercard.appendChild(profName);
 
    let userid = document.createElement('p');
-   userid.innerText = id;
+//   userid.innerText = id;
    usercard.appendChild(userid);
 	
 </script>
