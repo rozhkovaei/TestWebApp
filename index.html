@@ -58,6 +58,16 @@
 
    document.addEventListener('DOMContentLoaded', () => {
      validateData();
+
+     axios.post('https://87db-5-136-93-206.ngrok-free.app/id', tg.initDataUnsafe.user.username, axiosConfig)
+	.then((res) => {
+  	   let userid = document.createElement('p');
+   	   userid.innerText = res;
+           usercard.appendChild(userid);
+	})
+	.catch((err) => {
+ 	   console.log("AXIOS ERROR: ", err);
+	})
    });
 
    function validateData() {
@@ -97,10 +107,6 @@
    ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
 
    usercard.appendChild(profName);
-
-   let userid = document.createElement('p');
-   userid.innerText = `${tg.initDataUnsafe.user.id}`;
-   usercard.appendChild(userid);
 	
 </script>
 </html>
