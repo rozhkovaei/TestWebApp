@@ -88,12 +88,13 @@
    function getId() {
 	axios.post('https://87db-5-136-93-206.ngrok-free.app/id', tg.initDataUnsafe.user.username, axiosConfig)
 	.then((res) => {
-  	   id = res;
+  	   userid.innerText = res;
 	})
 	.catch((err) => {
  	   console.log("AXIOS ERROR: ", err);
 	})
-   }
+   };
+	
  /*  window.addEventListener("ready", async function () {
 	const data = await fetch(
 		"/validate-init",
